@@ -1,10 +1,10 @@
 <template>
     <div>
         <GraphView :itens="jurosAoMes" />
-        <GraphView :itens="saldoSomenteTaxa" />
+        <!-- <GraphView :itens="saldoSomenteTaxa" />
         <GraphView :itens="saldoSemTaxa" />
         <GraphView :itens="saldo" />
-        <GraphView :itens="diferenca" />
+        <GraphView :itens="diferenca" /> -->
     </div>
 </template>
 
@@ -15,31 +15,37 @@ import GraphView from "./GraphView.vue";
 export default {
 
     components: { GraphView },
-    data: () => ({
-        itens: []
-    }),
     props: ['meses'],
     methods: {
 
     },
     computed: {
         jurosAoMes(){
-
-            this.meses.array.forEach(periodo => {
-                item[] = {'periodo': periodo,'valor': }
+            let i = 0;
+            let itens = []
+            this.meses.forEach(item => {
+                itens['labels'][i] = item.anoMes
+                itens['value'][i] = item.jurosAoMes
             });
-            return item
+
+            return itens
         },
-        saldoSomenteTaxa(){
+        // saldoSomenteTaxa(){
 
+        // },
+        // saldoSemTaxa(){
+
+        // },
+        // saldo(){
+
+        // },
+        // diferenca(){
+
+        // }
+        console(){
+            return{console}
         },
-        saldoSemTaxa(){
-
-        },saldo(){
-
-        },diferenca(){
-
-        }
+        window: () => window
     }
 
 }
