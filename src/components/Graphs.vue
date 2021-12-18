@@ -1,10 +1,20 @@
 <template>
     <div>
-        <GraphView :itens="jurosAoMes" />
-        <!-- <GraphView :itens="saldoSomenteTaxa" />
-        <GraphView :itens="saldoSemTaxa" />
-        <GraphView :itens="saldo" />
-        <GraphView :itens="diferenca" /> -->
+        <GraphView
+            :nome="'Juro mensal'"
+            :itens="calculaInfo('jurosAoMes')" />
+
+        <GraphView
+            :nome="'Juros totais'"
+            :itens="calculaInfo('saldoSomenteTaxa')" />
+
+        <GraphView
+            :nome="'Saldo aportes'"
+            :itens="calculaInfo('saldoSemTaxa')" />
+
+        <GraphView
+            :nome="'Saldo total'"
+            :itens="calculaInfo('saldo')" />
     </div>
 </template>
 
@@ -17,31 +27,28 @@ export default {
     components: { GraphView },
     props: ['meses'],
     methods: {
+        calculaInfo(info){
 
-    },
-    computed: {
-        jurosAoMes(){
-            let i = 0;
-            let itens = []
-            this.meses.forEach(item => {
-                itens['labels'][i] = item.anoMes
-                itens['value'][i] = item.jurosAoMes
-            });
+            let qtdItens = this.meses.length
+            let maxItens = 10
+            let offset   = qtdItens / maxItens
+
+            let itens = new Object
+            itens.labels = new Array
+            itens.value = new Array
+
+            let j = 0
+            for (let i = 0; i < maxItens; i++) {
+                j = Math.round(i * offset)
+
+                itens.labels [i] = this.meses[j].anoMes
+                itens.value [i] = this.meses[j][info]
+            }
 
             return itens
-        },
-        // saldoSomenteTaxa(){
-
-        // },
-        // saldoSemTaxa(){
-
-        // },
-        // saldo(){
-
-        // },
-        // diferenca(){
-
-        // }
+        }
+    },
+    computed: {
         console(){
             return{console}
         },

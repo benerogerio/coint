@@ -27,7 +27,6 @@ export default {
                 { text: 'Juros totais', value: 'saldoSomenteTaxa' },
                 { text: 'Saldo aportes', value: 'saldoSemTaxa' },
                 { text: 'Saldo total', value: 'saldo' },
-                { text: 'Diferença', value: 'diferenca' },
                 ],
             itens: this.meses,
         }

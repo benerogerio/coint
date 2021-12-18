@@ -127,28 +127,25 @@ export default {
               this.meses[i].ano = Number(this.ano)
               this.meses[i].anoMes = Number(this.mes) + '/' + Number(this.ano)
               this.meses[i].jurosAoMes = 0
-              this.meses[i].diferenca = 0
 
               if(i == 0){
                   if(form.taxa > 0)
                       this.meses[i].taxa = Number(form.taxa);
 
                   this.meses[i].saldoSomenteTaxa = 0
-                  this.meses[i].saldoSemTaxa  = (form.invIni>0) ? Number(form.invIni) : Number(form.dep) // cast pq o ons-input type number da bug
+                  this.meses[i].saldoSemTaxa  = (form.invIni>0) ? Number(form.invIni) : Number(form.dep)
                   this.meses[i].saldo         = (form.invIni>0) ? Number(form.invIni) : Number(form.dep)
               }else if(i > 0){
                   // taxa referencia anterior
-                  this.meses[i].taxa = this.meses[i - 1].taxa;
+                  this.meses[i].taxa = this.meses[i - 1].taxa
                   // juros ao mes
-                  this.meses[i].jurosAoMes = this.valRound((this.meses[i].taxa * this.meses[i - 1].saldo)/100);
+                  this.meses[i].jurosAoMes = this.valRound((this.meses[i].taxa * this.meses[i - 1].saldo)/100)
                   // total somente taxa
-                  this.meses[i].saldoSomenteTaxa = this.valRound(this.meses[i - 1].saldoSomenteTaxa + this.meses[i].jurosAoMes);
+                  this.meses[i].saldoSomenteTaxa = this.valRound(this.meses[i - 1].saldoSomenteTaxa + this.meses[i].jurosAoMes)
                   // total sem juros
-                  this.meses[i].saldoSemTaxa = this.valRound(this.meses[i - 1].saldoSemTaxa + Number(form.dep));
+                  this.meses[i].saldoSemTaxa = this.valRound(this.meses[i - 1].saldoSemTaxa + Number(form.dep))
                   // total com juros
-                  this.meses[i].saldo = this.valRound(this.meses[i - 1].saldo + this.meses[i].jurosAoMes + Number(form.dep));
-                  // diferença
-                  this.meses[i].diferenca = this.valRound(this.meses[i].saldo - this.meses[i].saldoSemTaxa);
+                  this.meses[i].saldo = this.valRound(this.meses[i - 1].saldo + this.meses[i].jurosAoMes + Number(form.dep))
               }
 
               if(this.condBreak(form)){

@@ -1,51 +1,44 @@
 <template>
   <v-card
     class="mt-4 mx-auto"
-    max-width="400"
+    max-width="600"
   >
     <v-sheet
-      class="v-sheet--offset mx-auto"
-      color="cyan"
+      class="v-sheet--offset mx-auto mb-4"
+      color="grey"
       elevation="12"
       max-width="calc(100% - 32px)"
     >
       <v-sparkline
+        :show-labels="true"
         :labels="itens.labels"
         :value="itens.value"
+        :auto-draw-duration="2000"
+        auto-draw-easing="ease"
         color="white"
         line-width="2"
         padding="16"
+        smooth="8"
       ></v-sparkline>
     </v-sheet>
 
     <v-card-text class="pt-0">
-      <div class="text-h6 font-weight-light mb-2">
-        User Registrations
+      <div class="text-h6 font-weight-light">
+        {{nome}}
       </div>
-      <div class="subheading font-weight-light grey--text">
-        Last Campaign Performance
-      </div>
-      <v-divider class="my-2"></v-divider>
-      <v-icon
-        class="mr-2"
-        small
-      >
-        mdi-clock
-      </v-icon>
-      <span class="text-caption grey--text font-weight-light">last registration 26 minutes ago</span>
     </v-card-text>
   </v-card>
 </template>
 
 <script>
   export default {
-    props: ['itens']
+    props: ['nome','itens']
   }
 </script>
 
 <style>
   .v-sheet--offset {
-    top: -24px;
+    top: 5px;
     position: relative;
   }
 </style>
