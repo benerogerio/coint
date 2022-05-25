@@ -18,14 +18,14 @@
               <v-list-item-icon>
                 <v-icon>mdi-application-edit</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Dados</v-list-item-title>
+              <v-list-item-title>Informar dados</v-list-item-title>
             </v-list-item>
 
             <v-list-item @click="alternaComponente('GridView')">
               <v-list-item-icon>
                 <v-icon>mdi-table-edit</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Tabela</v-list-item-title>
+              <v-list-item-title>Detalhes</v-list-item-title>
             </v-list-item>
 
             <v-list-item @click="alternaComponente('Graphs')">
@@ -33,6 +33,13 @@
                 <v-icon>mdi-chart-line</v-icon>
               </v-list-item-icon>
               <v-list-item-title>Gráfico</v-list-item-title>
+            </v-list-item>
+
+            <v-list-item @click="alternaComponente('SelicHistory')">
+              <v-list-item-icon>
+                <v-icon>mdi-chart-line</v-icon>
+              </v-list-item-icon>
+              <v-list-item-title>Histórico Selic</v-list-item-title>
             </v-list-item>
           </v-list-item-group>
         </v-list>
@@ -58,14 +65,6 @@
             <component :meses="meses" @do-calculo="doCalculo($event)" :is="componente" />
         </keep-alive>
 
-        <!-- <template v-if="componente='FormInput'">
-          <FormInput @do-calculo="doCalculo($event)" />
-        </template>
-
-        <template v-else-if="componente='GridView'">
-          <GridView :meses="meses" />
-        </template> -->
-
         <!-- If using vue-router -->
         <!-- <router-view></router-view> -->
       </v-container>
@@ -81,13 +80,14 @@
 import FormInput from './components/FormInput.vue'
 import GridView from './components/GridView.vue'
 import Graphs from './components/Graphs.vue'
+import SelicHistory from './components/SelicHistory.vue'
 
 
 export default {
   name: 'App',
 
   components: {
-      FormInput, GridView, Graphs
+      FormInput, GridView, Graphs, SelicHistory
   },
   data: () => ({
       appName: 'Coint',

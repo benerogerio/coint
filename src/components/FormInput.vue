@@ -21,19 +21,6 @@
           md="4"
         >
           <v-text-field
-            v-model="form.taxa"
-            :rules="inputRules"
-            :counter="10"
-            label="Taxa"
-            required
-          ></v-text-field>
-        </v-col>
-
-        <v-col
-          cols="12"
-          md="4"
-        >
-          <v-text-field
             v-model="form.invIni"
             :rules="inputRules"
             label="Investimento inicial"
@@ -49,6 +36,19 @@
             v-model="form.dep"
             :rules="inputRules"
             label="Aporte mensal"
+            required
+          ></v-text-field>
+        </v-col>
+
+        <v-col
+          cols="12"
+          md="4"
+        >
+          <v-text-field
+            v-model="form.taxa"
+            :rules="inputRules"
+            :counter="10"
+            label="Taxa"
             required
           ></v-text-field>
         </v-col>
@@ -104,20 +104,21 @@
 <script>
 
 import Datepicker from "./Datepicker.vue"
+import axios from "axios"
 
 export default {
 
     components: { Datepicker },
     data: () => ({
-        valid: false,
         form:{
-            dataIni: '2021-01',
-            taxa:0.427,
+            dataIni: '',
+            taxa: null,
             invIni: 1800.00,
             dep: 500.00,
             qtdMeses: 36,
             saldoMax: 0
         },
+        valid: false,
         inputRules: [
             v => !!v || 'Campo obrigatório',
         ],
@@ -128,15 +129,31 @@ export default {
         emailRules: [
             v => !!v || 'E-mail é obrigatório',
             v => /.+@.+/.test(v) || 'E-mail deve ser válido',
-        ],
+        ]
     }),
     methods:{
+        dataAtual(){
+            let hoje = new Date()
+            let mes = hoje.getMonth()
+            let ano = hoje.getFullYear()
+
+            return `${ano}-${mes + 1}`
+        },
         doCalculo(){
             this.$emit('do-calculo', this.form)
         },
         alteraPeriodo(periodo){
             this.form.dataIni = periodo
         }
+    },
+    created () {
+      this.form.dataIni = this.dataAtual();
+    },
+    mounted () {
+        axios
+        .get('https://api.bcb.gov.br/dados/serie/bcdata.sgs.4390/dados/ultimos/5?formato=json')
+        .then(response => (this.form.taxa = response.data.at(-1).valor))
+        .catch( () => this.form.taxa = 0.6)
     }
 }
 </script>
