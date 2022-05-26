@@ -22,7 +22,7 @@
         >
           <v-text-field
             v-model="form.invIni"
-            :rules="inputRules"
+            :rules="numericRules"
             label="Investimento inicial"
             required
           ></v-text-field>
@@ -34,7 +34,7 @@
         >
           <v-text-field
             v-model="form.dep"
-            :rules="inputRules"
+            :rules="numericRules"
             label="Aporte mensal"
             required
           ></v-text-field>
@@ -46,7 +46,7 @@
         >
           <v-text-field
             v-model="form.taxa"
-            :rules="inputRules"
+            :rules="numericRules"
             :counter="10"
             label="Taxa"
             required
@@ -59,7 +59,7 @@
         >
           <v-text-field
             v-model="form.qtdMeses"
-            :rules="inputRules"
+            :rules="numericRules"
             label="Quantidade de meses"
             required
           ></v-text-field>
@@ -71,6 +71,7 @@
             >
             <v-text-field
                 v-model="form.saldoMax"
+                :rules="numericRules"
                 label="Saldo máximo"
             ></v-text-field>
         </v-col>
@@ -129,6 +130,9 @@ export default {
         emailRules: [
             v => !!v || 'E-mail é obrigatório',
             v => /.+@.+/.test(v) || 'E-mail deve ser válido',
+        ],numericRules: [
+            v => !!v || 'Número obrigatório',
+            v => !isNaN(v) || 'Somente números',
         ]
     }),
     methods:{

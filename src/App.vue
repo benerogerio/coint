@@ -68,6 +68,9 @@
         <!-- If using vue-router -->
         <!-- <router-view></router-view> -->
       </v-container>
+      <v-container>
+         <AdsGoogle />
+      </v-container>
     </v-main>
 
     <v-footer app>
@@ -81,13 +84,14 @@ import FormInput from './components/FormInput.vue'
 import GridView from './components/GridView.vue'
 import Graphs from './components/Graphs.vue'
 import SelicHistory from './components/SelicHistory.vue'
+import AdsGoogle from './components/AdsGoogle.vue'
 
 
 export default {
   name: 'App',
 
   components: {
-      FormInput, GridView, Graphs, SelicHistory
+      FormInput, GridView, Graphs, SelicHistory, AdsGoogle
   },
   data: () => ({
       appName: 'Coint',
@@ -117,7 +121,11 @@ export default {
           this.calcNext = true
           this.meses = []
 
-          if(form.qtdMeses <= 0 && form.saldoMax <= 0)
+          if((form.qtdMeses <= 0 && form.saldoMax <= 0)
+            || isNaN(form.qtdMeses) || isNaN(form.saldoMax))
+              return false;
+
+          if(form.taxa <= 0 || isNaN(form.taxa))
               return false;
 
           let i = 0;
