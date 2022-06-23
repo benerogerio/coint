@@ -17,5 +17,8 @@ export default {
 </script>
 
 <style>
-
+  .ad-container {
+    width: 100%;
+    max-width: 100%;
+  }
 </style>

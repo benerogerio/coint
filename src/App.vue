@@ -1,8 +1,18 @@
 <template>
   <v-app>
-    <v-navigation-drawer
-        v-model="drawer"
+
+      <v-app-bar
+        app
         absolute
+        dark
+      >
+        <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+
+        <v-toolbar-title>{{appName}}</v-toolbar-title>
+      </v-app-bar>
+
+      <v-navigation-drawer
+        v-model="drawer"
         temporary
         app
       >
@@ -25,7 +35,7 @@
               <v-list-item-icon>
                 <v-icon>mdi-table-edit</v-icon>
               </v-list-item-icon>
-              <v-list-item-title>Detalhes</v-list-item-title>
+              <v-list-item-title>Períodos</v-list-item-title>
             </v-list-item>
 
             <v-list-item @click="alternaComponente('Graphs')">
@@ -45,16 +55,6 @@
         </v-list>
       </v-navigation-drawer>
 
-      <v-app-bar
-        app
-      >
-        <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-
-        <v-toolbar-title>{{appName}}</v-toolbar-title>
-      </v-app-bar>
-
-
-
     <!-- Sizes your content based upon application components -->
     <v-main>
 
@@ -68,8 +68,9 @@
         <!-- If using vue-router -->
         <!-- <router-view></router-view> -->
       </v-container>
-      <v-container>
-         <AdsGoogle />
+
+      <v-container fluid>
+        <AdsGoogle />
       </v-container>
     </v-main>
 
@@ -94,7 +95,8 @@ export default {
       FormInput, GridView, Graphs, SelicHistory, AdsGoogle
   },
   data: () => ({
-      appName: 'Coint',
+      value: 'recent',
+      appName: 'COINT | Calculadora de juros compostos ao mês',
       drawer: false,
       group: null,
       componente: 'FormInput',
