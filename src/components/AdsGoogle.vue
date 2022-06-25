@@ -2,7 +2,7 @@
   <div class="ad-container">
     <Adsense
       data-ad-client="ca-pub-6515701583756658"
-      data-ad-slot="5284096554"
+      data-ad-slot="6376386605"
       data-ad-format="auto"
       data-full-width-responsive="true"
     >
@@ -19,6 +19,7 @@ export default {
 <style>
   .ad-container {
     width: 100%;
+    min-width: 250px;
     max-width: 100%;
   }
 </style>

@@ -96,7 +96,7 @@ export default {
   },
   data: () => ({
       value: 'recent',
-      appName: 'COINT | Calculadora de juros compostos ao mês',
+      appName: 'COINT | Calculadora de juros compostos mensal',
       drawer: false,
       group: null,
       componente: 'FormInput',
