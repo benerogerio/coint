@@ -13,11 +13,17 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "~10.1.2"
+    "cordova-admob": "^5.1.0",
+    "cordova-android": "~10.1.2",
+    "cordova-connectivity-monitor": "^1.2.2",
+    "cordova-play-services-version-adapter": "^1.1.0"
   },
   "cordova": {
     "platforms": [
       "android"
-    ]
+    ],
+    "plugins": {
+      "cordova-admob": {}
+    }
   }
 }
