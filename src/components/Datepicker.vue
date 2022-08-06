@@ -18,6 +18,8 @@
         ></v-text-field>
       </template>
       <v-date-picker
+        locale="pt-br"
+        light
         v-model="date"
         :active-picker.sync="activePicker"
         min="1950-01-01"

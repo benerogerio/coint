@@ -8,12 +8,14 @@
 
   export default  {
     created(){
+      //if(Window.cordova) // se cordova definido dispara banner
         return this.fireBanner()
     },
     methods : {
       fireBanner() {
         admob.setOptions({
           publisherId:           "ca-app-pub-6515701583756658/1084097670",  // Required
+          //publisherId:           "ca-app-pub-3940256099942544/6300978111",  // Required Teste
           //interstitialAdId:      "ca-app-pub-3940256099942544/1033173712",  // Optional
           autoShowBanner:        true,                                      // Optional
           //autoShowRInterstitial: false,                                     // Optional

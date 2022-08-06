@@ -5,6 +5,11 @@
     :items-per-page="5"
     class="elevation-1"
     disable-sort
+    dense
+    locale="pt-br"
+    mobile-breakpoint="350"
+    :disable-items-per-page="true"
+    :fixed-header="true"
   ></v-data-table>
 </template>
 

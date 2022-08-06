@@ -48,7 +48,7 @@
             v-model="form.taxa"
             :rules="numericRules"
             :counter="10"
-            label="Taxa"
+            label="Taxa (Selic atual)"
             required
           ></v-text-field>
         </v-col>
@@ -59,8 +59,8 @@
         >
           <v-text-field
             v-model="form.qtdMeses"
-            :rules="numericRules"
-            label="Quantidade de meses"
+            :rules="numericOpcRules"
+            label="Quantidade de meses (opcional)"
             required
           ></v-text-field>
         </v-col>
@@ -71,8 +71,8 @@
             >
             <v-text-field
                 v-model="form.saldoMax"
-                :rules="numericRules"
-                label="Saldo máximo"
+                :rules="numericOpcRules"
+                label="Saldo máximo (opcional)"
             ></v-text-field>
         </v-col>
       </v-row>
@@ -83,6 +83,8 @@
         >
         <v-col>
           <v-btn
+            block
+            left
             color="blue-grey"
             class="ma-2 white--text"
             @click="doCalculo"
@@ -132,6 +134,8 @@ export default {
             v => /.+@.+/.test(v) || 'E-mail deve ser válido',
         ],numericRules: [
             v => !!v || 'Número obrigatório',
+            v => !isNaN(v) || 'Somente números',
+        ],numericOpcRules: [
             v => !isNaN(v) || 'Somente números',
         ]
     }),

@@ -3,57 +3,11 @@
 
       <v-app-bar
         app
-        absolute
+        elevate-on-scroll
         dark
       >
-        <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
-
         <v-toolbar-title>{{appName}}</v-toolbar-title>
       </v-app-bar>
-
-      <v-navigation-drawer
-        v-model="drawer"
-        temporary
-        app
-      >
-        <v-list
-          nav
-          dense
-        >
-          <v-list-item-group
-            v-model="group"
-            active-class="deep-purple--text text--accent-4"
-          >
-            <v-list-item @click="alternaComponente('FormInput')">
-              <v-list-item-icon>
-                <v-icon>mdi-application-edit</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Informar dados</v-list-item-title>
-            </v-list-item>
-
-            <v-list-item @click="alternaComponente('GridView')">
-              <v-list-item-icon>
-                <v-icon>mdi-table-edit</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Períodos</v-list-item-title>
-            </v-list-item>
-
-            <v-list-item @click="alternaComponente('Graphs')">
-              <v-list-item-icon>
-                <v-icon>mdi-chart-line</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Gráfico</v-list-item-title>
-            </v-list-item>
-
-            <v-list-item @click="alternaComponente('SelicHistory')">
-              <v-list-item-icon>
-                <v-icon>mdi-chart-line</v-icon>
-              </v-list-item-icon>
-              <v-list-item-title>Histórico Selic</v-list-item-title>
-            </v-list-item>
-          </v-list-item-group>
-        </v-list>
-      </v-navigation-drawer>
 
     <!-- Sizes your content based upon application components -->
     <v-main>
@@ -75,7 +29,31 @@
     </v-main>
 
     <v-footer app>
-      <!-- -->
+      <v-bottom-navigation v-model="value">
+        <v-btn @click="alternaComponente('FormInput')" value="form">
+          <span>Informar dados</span>
+
+          <v-icon>mdi-application-edit</v-icon>
+        </v-btn>
+
+        <v-btn @click="alternaComponente('GridView')" value="gridview">
+          <span>Períodos</span>
+
+          <v-icon>mdi-table-edit</v-icon>
+        </v-btn>
+
+        <v-btn @click="alternaComponente('Graphs')" value="graphs">
+          <span>Gráfico</span>
+
+          <v-icon>mdi-chart-line</v-icon>
+        </v-btn>
+
+        <v-btn @click="alternaComponente('SelicHistory')" value="history">
+          <span>Histórico Selic</span>
+
+          <v-icon>mdi-history</v-icon>
+        </v-btn>
+      </v-bottom-navigation>
     </v-footer>
   </v-app>
 </template>
@@ -95,10 +73,8 @@ export default {
       FormInput, GridView, Graphs, SelicHistory, AdsGoogle
   },
   data: () => ({
-      value: 'recent',
-      appName: 'COINT | Calculadora de juros compostos mensal',
-      drawer: false,
-      group: null,
+      value: 'form',
+      appName: 'COINT | Calculadora de juros compostos',
       componente: 'FormInput',
       mes: 1,
       ano: 2021,
@@ -167,6 +143,7 @@ export default {
           }
 
           this.alternaComponente('GridView')
+          this.value = 'gridview'
 
       },
       // condições para parar o laço
