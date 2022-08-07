@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.vue.coint.app" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="com.ikkarus.coint" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
     <name>Coint</name>
-    <description>Calculadora de juros compostos ao mês</description>
+    <description>Calculadora de juros compostos</description>
     <author email="bene.rogerio@hotmail.com">
-        Apache Cordova Team
+        Rogerio Bene
     </author>
     <hook src="../node_modules/vue-cli-plugin-cordova/serve-config-hook.js" type="after_prepare" />
     <content src="index.html" />
