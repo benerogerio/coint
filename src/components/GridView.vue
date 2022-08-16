@@ -1,41 +1,52 @@
 <template>
-  <v-data-table
-    :headers="cabecalho"
-    :items="meses"
-    :items-per-page="5"
-    class="elevation-1"
-    disable-sort
+
+  <v-simple-table
     dense
-    locale="pt-br"
-    mobile-breakpoint="350"
-    :disable-items-per-page="true"
-    :fixed-header="true"
-  ></v-data-table>
+    fixed-header
+    height="700px"
+  >
+    <template v-slot:default>
+      <thead>
+        <tr>
+          <th class="text-left">
+            Período
+          </th>
+          <th class="text-left">
+            Juro mensal
+          </th>
+          <th class="text-left">
+            Juros totais
+          </th>
+          <th class="text-left">
+            Saldo aportes
+          </th>
+          <th class="text-left">
+            Saldo total
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          v-for="item in meses"
+          :key="item.name"
+        >
+          <td>{{ item.anoMes }}</td>
+          <td>{{ item.jurosAoMes }}</td>
+          <td>{{ item.saldoSomenteTaxa }}</td>
+          <td>{{ item.saldoSemTaxa }}</td>
+          <td>{{ item.saldo }}</td>
+        </tr>
+      </tbody>
+    </template>
+  </v-simple-table>
+
 </template>
 
 <script>
 
 export default {
 
-    props:
-        ['meses']
-    ,
-    data(){
-        return{
-            cabecalho: [
-                {
-                    text: 'Período',
-                    align: 'start',
-                    sortable: false,
-                    value: 'anoMes' },
-                { text: 'Juro mensal', value: 'jurosAoMes' },
-                { text: 'Juros totais', value: 'saldoSomenteTaxa' },
-                { text: 'Saldo aportes', value: 'saldoSemTaxa' },
-                { text: 'Saldo total', value: 'saldo' },
-                ],
-            itens: this.meses,
-        }
-    }
+    props: ['meses']
 }
 </script>
 

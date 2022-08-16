@@ -4,6 +4,20 @@
       <v-row>
         <v-col
           cols="12"
+          md="4">
+
+          <v-card-text>
+            Preencha os dados e informe, ao menos, uma <b>Quantidade de meses</b> ou um <b>Saldo máximo</b>
+          </v-card-text>
+
+        </v-col>
+      </v-row>
+
+      <v-divider></v-divider>
+
+      <v-row>
+        <v-col
+          cols="12"
           md="4"
         >
           <Datepicker
@@ -21,6 +35,7 @@
           md="4"
         >
           <v-text-field
+            type="number"
             v-model="form.invIni"
             :rules="numericRules"
             label="Investimento inicial"
@@ -33,6 +48,7 @@
           md="4"
         >
           <v-text-field
+            type="number"
             v-model="form.dep"
             :rules="numericRules"
             label="Aporte mensal"
@@ -45,6 +61,7 @@
           md="4"
         >
           <v-text-field
+            type="number"
             v-model="form.taxa"
             :rules="numericRules"
             :counter="10"
@@ -58,6 +75,7 @@
           md="4"
         >
           <v-text-field
+            type="number"
             v-model="form.qtdMeses"
             :rules="numericOpcRules"
             label="Quantidade de meses (opcional)"
@@ -70,6 +88,7 @@
             md="4"
             >
             <v-text-field
+                type="number"
                 v-model="form.saldoMax"
                 :rules="numericOpcRules"
                 label="Saldo máximo (opcional)"

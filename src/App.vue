@@ -31,7 +31,7 @@
     <v-footer app>
       <v-bottom-navigation v-model="value">
         <v-btn @click="alternaComponente('FormInput')" value="form">
-          <span>Informar dados</span>
+          <span>Dados</span>
 
           <v-icon>mdi-application-edit</v-icon>
         </v-btn>
@@ -42,14 +42,20 @@
           <v-icon>mdi-table-edit</v-icon>
         </v-btn>
 
+        <v-btn @click="alternaComponente('PieGraph')" value="piegraph">
+          <span>Proporção</span>
+
+          <v-icon>mdi-chart-pie</v-icon>
+        </v-btn>
+
         <v-btn @click="alternaComponente('Graphs')" value="graphs">
-          <span>Gráfico</span>
+          <span>Tempo</span>
 
           <v-icon>mdi-chart-line</v-icon>
         </v-btn>
 
         <v-btn @click="alternaComponente('SelicHistory')" value="history">
-          <span>Histórico Selic</span>
+          <span>Selic</span>
 
           <v-icon>mdi-history</v-icon>
         </v-btn>
@@ -62,6 +68,7 @@
 import FormInput from './components/FormInput.vue'
 import GridView from './components/GridView.vue'
 import Graphs from './components/Graphs.vue'
+import PieGraph from './components/PieGraph.vue'
 import SelicHistory from './components/SelicHistory.vue'
 import AdsGoogle from './components/AdsGoogle.vue'
 
@@ -70,7 +77,7 @@ export default {
   name: 'App',
 
   components: {
-      FormInput, GridView, Graphs, SelicHistory, AdsGoogle
+      FormInput, GridView, Graphs, PieGraph, SelicHistory, AdsGoogle
   },
   data: () => ({
       value: 'form',
