@@ -7,9 +7,11 @@
             <apexchart type="line" :options="options" :series="series"></apexchart>
         </div>
     </v-card>
-    <div v-else>
-        Um momento...
-    </div>
+    <v-card v-else>
+        <p>
+            Um momento...
+        </p>
+    </v-card>
 </template>
 
 <script>

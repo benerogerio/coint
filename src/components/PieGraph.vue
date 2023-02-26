@@ -1,14 +1,14 @@
 <template>
-    <v-card
+    <v-card v-if="meses.length != 0"
         class="mt-4 mx-auto"
         max-width="500"
     >
-        <div v-if="options && series">
-            <apexchart type="donut" :options="options" :series="series"></apexchart>
-        </div>
-        <div v-else>
-            Dados inexistentes
-        </div>
+        <apexchart type="donut" :options="options" :series="series"></apexchart>
+    </v-card>
+    <v-card v-else>
+        <p>
+            Informe os <strong>dados</strong> para visualizar.
+        </p>
     </v-card>
 </template>
 
