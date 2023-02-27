@@ -8,7 +8,7 @@
         </div>
     </v-card>
     <v-card v-else>
-        <p>
+        <p class="pa-4">
             Um momento...
         </p>
     </v-card>

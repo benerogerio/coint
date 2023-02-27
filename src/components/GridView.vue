@@ -42,7 +42,7 @@
     </v-simple-table>
   </v-card>
   <v-card v-else>
-    <p>
+    <p class="pa-4">
         Informe os <strong>dados</strong> para visualizar.
     </p>
   </v-card>
