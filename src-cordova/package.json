@@ -13,20 +13,21 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-admob": "^5.1.0",
-    "cordova-android": "^11.0.0",
-    "cordova-connectivity-monitor": "^1.2.2",
-    "cordova-play-services-version-adapter": "^1.1.0"
+    "cordova-android": "^11.0.0"
   },
   "cordova": {
     "platforms": [
       "android"
     ],
     "plugins": {
-      "cordova-admob": {}
+      "admob-plus-cordova": {
+        "APP_ID_ANDROID": "ca-app-pub-6515701583756658~1811354396",
+        "PLAY_SERVICES_VERSION": "20.6.0"
+      }
     }
   },
   "dependencies": {
+    "admob-plus-cordova": "1.28.0",
     "cordova-plugin-splashscreen": "^6.0.2"
   }
 }
